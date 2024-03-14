@@ -1,0 +1,29 @@
+{
+    "name": "Simple Ad Blocker",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "permissions": [
+        "declarativeNetRequest",
+        "scripting"
+    ],
+    "host_permissions": ["*://*.youtube.com/*"],
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "ruleset_1",
+                "enabled": true,
+                "path": "rules.json"
+            }
+        ]
+    },
+    "background": {
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.youtube.com/*"],
+            "js": ["youtube_accelerator_content.js"],
+            "run_at": "document_end",
+            "all_frames":true
+        }
+    ]    
+}
